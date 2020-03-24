@@ -14,11 +14,11 @@ OBJS = \
   $K/vm.o \
   $K/trampoline.o \
   $K/debug.o \
+  $K/proc.o \
+  $K/trap.o \
   # $K/spinlock.o \
   # $K/sleeplock.o \
-  # $K/proc.o \
   # $K/swtch.o \
-  # $K/trap.o \
   # $K/syscall.o \
   # $K/sysproc.o \
   # $K/bio.o \

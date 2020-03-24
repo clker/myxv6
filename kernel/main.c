@@ -21,11 +21,15 @@ main()
     printf("Init memory done\n");
     printf("create kernel page table\n");
     kvminit();       // create kernel page table
+    kvminithart();   // turn on paging
     printf("create kernel page table done\n");
-    // kvminithart();   // turn on paging
-    // procinit();      // process table
+    printf("process init\n");
+    procinit();      // process table
+    printf("process init done\n");
+    printf("trap init\n");
     // trapinit();      // trap vectors
-    // trapinithart();  // install kernel trap vector
+    trapinithart();  // install kernel trap vector
+    printf("trap init done\n");
     // plicinit();      // set up interrupt controller
     // plicinithart();  // ask PLIC for device interrupts
     // binit();         // buffer cache

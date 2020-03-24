@@ -35,12 +35,17 @@ freerange(void *pa_start, void *pa_end)
 {
   char *p;
   p = (char*)PGROUNDUP((uint64)pa_start);
-  // printf("freerange start\n");
+  printf("freerange (%p,%p)\n",pa_start,pa_end);
   // printf("kmem.freelist = %p \n",kmem.freelist);
   for(; p + PGSIZE <= (char*)pa_end; p += PGSIZE)
     kfree(p);
-  // printf("freerange end\n");
-  // printf("kmem.freelist = %p \n",kmem.freelist);
+  printf("freerange end\n");
+  // printf("kmem.p = %p \n",&kmem);
+  // printf("kmem = %p \n",kmem);
+  // printf("kmem.freelist = %p \n",*(kmem.freelist));
+  // printf("kmem.freelist.p = %p \n",kmem.freelist);
+  // printf("kmem.freelist.next = %p \n",*(kmem.freelist->next));
+  // printf("kmem.freelist.next.p = %p \n",(kmem.freelist->next));
 }
 
 // Free the page of physical memory pointed at by v,
@@ -82,6 +87,6 @@ kalloc(void)
 
   if(r)
     memset((char*)r, 5, PGSIZE); // fill with junk
-  printf("kalloc %p \n",r);
+  // printf("kalloc %p \n",r);
   return (void*)r;
 }
